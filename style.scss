@@ -42,13 +42,13 @@ header{
     }
     .cart{
         display: flex;
-        justify-content: end;
+        justify-content: center;
         align-items: center;
         font-size: 25px;
         cursor: pointer;
         p{
-            position: absolute;
-            right: 25px;
+            //position: absolute;
+            //right: 25px;
             font-size: 15px;
         }
     }

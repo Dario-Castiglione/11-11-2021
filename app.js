@@ -24,7 +24,7 @@ function createEl(array){
      wrapper[0].appendChild(element)
      element.addEventListener("click", () => {
          TotalCart += card.price
-         cart.lastElementChild.innerText = `${TotalCart} $`
+         cart.lastElementChild.innerText = `🛒${TotalCart} $`
          
      })
    })
