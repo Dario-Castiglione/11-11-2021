@@ -77,6 +77,10 @@ header .cart p {
   display: -ms-flexbox;
   display: flex;
   overflow-y: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .card {
