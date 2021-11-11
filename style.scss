@@ -27,6 +27,7 @@ body{
 }
 header{
     color: #fff;
+    max-height: fit-content;
     background: rgb(25, 26, 26);;
     padding: 15px ;
     //border: 1px solid red;
@@ -44,7 +45,7 @@ header{
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 25px;
+        font-size: 20px;
         cursor: pointer;
         p{
             //position: absolute;
