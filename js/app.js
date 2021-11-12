@@ -1,7 +1,7 @@
 import {products} from "./products.js";
 
 const wrapper = document.querySelectorAll("#wrapper")
-const filter = document.querySelectorAll(".filter p span")
+const orderElement = document.querySelector('#order');
 
 const cart = document.querySelector(".cart")
 let totalCart = localStorage.getItem("totalPrice");
@@ -53,8 +53,48 @@ function render(array){
 
    })
 }
+function orderByPrice(a, b)
+{
+    if ( a.price < b.price ){
+        return -1;
+      }
+      if ( a.price > b.price ){
+        return 1;
+      }
+
+      return 0;
+}
+function orderByScore(a, b)
+{
+    if ( a.rating.rate < b.rating.rate ){
+        return -1;
+      }
+      if ( a.rating.rate > b.rating.rate ){
+        return 1;
+      }
+
+      return 0;
+      
+}
+
+
+
+
+
+
+//------------------------ORDER BY WHAT?
+function order(array){
+orderElement.addEventListener('change', (e) => {
+    if (orderElement.value === "prezzo" ) array = array.sort(orderByPrice) 
+    if (orderElement.value === "punteggio" ) array = array.sort(orderByScore)
+
+    render(products)
+})
+}
+
 document.addEventListener("DOMContentLoaded", ()=>{
 loadStorage()
 render(products)
 cart.textContent = `🛒 ${totalCart} $`
+order(products)
 })
