@@ -2,7 +2,6 @@ import {products} from "./products.js";
 
 const wrapper = document.querySelectorAll("#wrapper")
 const orderElement = document.querySelector('#order');
-
 const cart = document.querySelector(".cart")
 let totalCart = localStorage.getItem("totalPrice");
 
@@ -13,6 +12,7 @@ function loadStorage(){
     totalCart = parseInt(localStorage.getItem("totalPrice"))
     cart.textContent = `🛒 ${totalCart} $`
 }
+
 function saveStorage(key, attribute){
     localStorage.setItem(key, attribute)
 }
@@ -53,44 +53,34 @@ function render(array){
 
    })
 }
-function orderByPrice(a, b)
-{
+
+
+//------------------------------order
+function orderByPrice(a, b){
     if ( a.price < b.price ){
         return -1;
       }
       if ( a.price > b.price ){
         return 1;
       }
+      return 0;}
 
-      return 0;
-}
-function orderByScore(a, b)
-{
+function orderByScore(a, b){
     if ( a.rating.rate < b.rating.rate ){
         return -1;
       }
       if ( a.rating.rate > b.rating.rate ){
         return 1;
       }
+      return 0;}
 
-      return 0;
-      
-}
-
-
-
-
-
-
-//------------------------ORDER BY WHAT?
 function order(array){
-orderElement.addEventListener('change', (e) => {
-    if (orderElement.value === "prezzo" ) array = array.sort(orderByPrice) 
-    if (orderElement.value === "punteggio" ) array = array.sort(orderByScore)
-
-    render(products)
-})
-}
+    orderElement.addEventListener('change', (e) => {
+        if (orderElement.value === "prezzo" ) array = array.sort(orderByPrice) 
+        if (orderElement.value === "punteggio" ) array = array.sort(orderByScore)
+        render(products)
+    })}
+//------------------------START
 
 document.addEventListener("DOMContentLoaded", ()=>{
 loadStorage()
