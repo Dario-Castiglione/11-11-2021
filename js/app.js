@@ -2,7 +2,7 @@ import {products} from "./products.js";
 
 const wrapper = document.querySelectorAll("#wrapper")
 const orderElement = document.querySelector('#order');
-const cart = document.querySelector(".cart")
+const cart = document.querySelector(".cart span")
 let totalCart = localStorage.getItem("totalPrice");
 
 
@@ -12,19 +12,15 @@ function loadStorage(){
     totalCart = parseInt(localStorage.getItem("totalPrice"))
     cart.textContent = `🛒 ${totalCart} $`
 }
-
 function saveStorage(key, attribute){
     localStorage.setItem(key, attribute)
 }
-
 //--------------------------Add to cart
 const addToCart = (element,card) => {
-
     element.addEventListener("click", () => {
     totalCart += parseInt(card.price)
     saveStorage("totalPrice",totalCart)
-    cart.textContent = `🛒 ${totalCart} $`
-      
+    cart.textContent = `🛒 ${totalCart} $`     
 })}
 //----------------------------Render
 function render(array){
@@ -50,11 +46,8 @@ function render(array){
      wrapper[0].appendChild(element)
      addToCart(element, card)
      
-
    })
 }
-
-
 //------------------------------order
 function orderByPrice(a, b){
     if ( a.price < b.price ){
@@ -82,9 +75,11 @@ function order(array){
     })}
 //------------------------START
 
+
 document.addEventListener("DOMContentLoaded", ()=>{
 loadStorage()
 render(products)
 cart.textContent = `🛒 ${totalCart} $`
 order(products)
+
 })
